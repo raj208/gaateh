@@ -7,8 +7,7 @@ import { Container } from "@/components/shared/container"
 import { Reveal } from "@/components/shared/reveal"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { SectionWrapper } from "@/components/shared/section-wrapper"
-import { Button } from "@/components/ui/button"
-import { contactReasonOptions } from "@/lib/constants"
+import { ContactForm } from "@/components/sections/contact-form"
 import { siteConfig } from "@/lib/site"
 
 export function ContactSection() {
@@ -21,7 +20,7 @@ export function ContactSection() {
               <SectionHeading
                 eyebrow="Contact"
                 title="Reach out for investor, collaborator, or early team conversations."
-                description="The backend contact flow is intentionally not live yet. For now, this section presents the intended interaction design alongside the founder's direct email."
+                description="Use the form or founder email for investor, collaborator, hiring, product, or partnership conversations. Submitting the form opens a prefilled Gmail draft addressed to the founder."
               />
 
               <SectionDivider label="Investors, collaborators, future team" />
@@ -62,8 +61,8 @@ export function ContactSection() {
                       Contact note
                     </div>
                     <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                      The form below is UI-only for now. Direct email remains the active route until
-                      the backend flow is added next.
+                      The form below opens Gmail with a prepared draft. You can review it there and
+                      send it directly to the founder.
                     </p>
                   </div>
                 </div>
@@ -72,80 +71,7 @@ export function ContactSection() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="surface-panel relative overflow-hidden p-6 sm:p-8">
-              <LineGrid className="text-[oklch(0.39_0.04_42)] opacity-25" />
-              <AmbientOrb tone="earth" className="-left-8 bottom-0 size-24 opacity-75" />
-
-              <form className="relative space-y-5" aria-describedby="contact-form-note">
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-foreground">
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      autoComplete="name"
-                      placeholder="Your name"
-                      className="field-control"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-foreground">
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                      placeholder="you@example.com"
-                      className="field-control"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="reason" className="text-sm font-medium text-foreground">
-                    Reason for reaching out
-                  </label>
-                  <select id="reason" name="reason" defaultValue="" className="field-control">
-                    <option value="" disabled>
-                      Select a reason
-                    </option>
-                    {contactReasonOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-foreground">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    placeholder="Share context about your interest, role, or conversation."
-                    className="field-control resize-none"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <p id="contact-form-note" className="text-sm leading-6 text-muted-foreground">
-                    Contact flow coming next. This UI is ready for the future Resend-backed form
-                    integration.
-                  </p>
-                  <Button disabled className="h-12 px-6">
-                    Contact flow coming next
-                  </Button>
-                </div>
-              </form>
-            </div>
+            <ContactForm />
           </Reveal>
         </div>
       </Container>

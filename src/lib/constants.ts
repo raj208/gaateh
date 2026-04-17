@@ -11,11 +11,3 @@ export const platformSnapshotSignals = [
   "Serious intent",
   "Community-rooted onboarding",
 ] as const
-
-export const contactReasonOptions = [
-  "Investor conversation",
-  "Collaborator inquiry",
-  "Potential team fit",
-  "Partnership exploration",
-  "General introduction",
-] as const
