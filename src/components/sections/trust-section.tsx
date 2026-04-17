@@ -19,6 +19,7 @@ type TrustLayer = {
   icon: LucideIcon
   title: string
   description: string
+  accent?: string
 }
 
 const trustLayers: TrustLayer[] = [
@@ -27,42 +28,49 @@ const trustLayers: TrustLayer[] = [
     title: "Introduction videos",
     description:
       "Short introductions add seriousness, tone, and self-representation in a way static profiles cannot.",
+    accent: "from-amber-500/10 to-orange-500/5",
   },
   {
     icon: ScanFace,
     title: "Future-ready liveness checks",
     description:
       "Live selfie and liveness layers can be introduced as the product matures to strengthen authenticity and reduce spoofing risk.",
+    accent: "from-emerald-500/10 to-teal-500/5",
   },
   {
     icon: ShieldCheck,
     title: "Verification signals",
     description:
       "Progressive identity and profile trust markers can help users understand credibility without oversharing personal data.",
+    accent: "from-blue-500/10 to-indigo-500/5",
   },
   {
     icon: EyeOff,
     title: "Privacy controls",
     description:
       "Visibility, pacing, and exposure should be adjustable so discovery feels selective rather than performative.",
+    accent: "from-violet-500/10 to-purple-500/5",
   },
   {
     icon: Flag,
     title: "Report and block foundations",
     description:
       "Fast recourse matters. Reporting, blocking, and escalation paths should exist as first-order product capabilities.",
+    accent: "from-rose-500/10 to-red-500/5",
   },
   {
     icon: UsersRound,
     title: "One-person-one-account thinking",
     description:
       "The system should be designed to discourage duplicates, impersonation, and disposable account behavior over time.",
+    accent: "from-sky-500/10 to-cyan-500/5",
   },
   {
     icon: ShieldPlus,
     title: "Moderation readiness",
     description:
       "Trust is not just UI. Review tooling, policy signals, and operator workflows are part of the product's long-term defensibility.",
+    accent: "from-amber-500/10 to-yellow-500/5",
   },
 ]
 
@@ -78,7 +86,8 @@ export function TrustSection() {
               description="This is not a thin safety layer added after growth. The platform is designed so verification, privacy, moderation readiness, and serious intent become part of the core user experience."
             />
 
-            <div className="surface-panel p-6 sm:p-7">
+            <div className="surface-panel relative overflow-hidden p-6 sm:p-7">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
               <p className="text-base leading-8 text-muted-foreground">
                 Investor relevance comes from the fact that trust here is both product logic and
                 operating logic. If serious introductions are the use case, then accountability,
@@ -89,14 +98,25 @@ export function TrustSection() {
         </Reveal>
 
         <StaggerGroup className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {trustLayers.map((layer) => (
+          {trustLayers.map((layer, index) => (
             <StaggerItem key={layer.title}>
-              <article className="interactive-card h-full p-6">
-                <div className="icon-shell">
-                  <layer.icon className="size-5" />
+              <article className="interactive-card group h-full p-6">
+                {/* Subtle colored gradient overlay */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${layer.accent} opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
+                />
+                <div className="relative">
+                  <div className="flex items-center gap-3">
+                    <div className="icon-shell">
+                      <layer.icon className="size-5" />
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground/60">
+                      Layer {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-xl leading-tight">{layer.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-muted-foreground">{layer.description}</p>
                 </div>
-                <h3 className="mt-5 text-xl leading-tight">{layer.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-muted-foreground">{layer.description}</p>
               </article>
             </StaggerItem>
           ))}

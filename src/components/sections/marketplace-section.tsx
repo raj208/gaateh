@@ -15,6 +15,7 @@ type MarketplaceCard = {
   icon: LucideIcon
   title: string
   description: string
+  accent: string
 }
 
 const marketplaceCards: MarketplaceCard[] = [
@@ -23,18 +24,21 @@ const marketplaceCards: MarketplaceCard[] = [
     title: "Better onboarding control",
     description:
       "Women should have clarity over visibility, pace, and the seriousness of incoming interest. Better control leads to better trust.",
+    accent: "from-violet-500/10 to-indigo-500/5",
   },
   {
     icon: BadgeCheck,
     title: "Higher-quality demand signals",
     description:
       "When the experience is built to feel safe and respectful for the most trust-sensitive side of the market, overall participation quality improves.",
+    accent: "from-emerald-500/10 to-teal-500/5",
   },
   {
     icon: HandCoins,
     title: "Stronger retention and referrals",
     description:
       "Healthier early trust tends to create better retention, reputation, and referral loops than a marketplace optimized only for top-of-funnel volume.",
+    accent: "from-amber-500/10 to-orange-500/5",
   },
 ]
 
@@ -51,7 +55,8 @@ export function MarketplaceSection() {
                 description="The intent is not to make symbolic claims. It is to build a healthier and more durable early marketplace by improving confidence, control, and participation quality where trust matters most."
               />
 
-              <div className="surface-panel p-6 sm:p-7">
+              <div className="surface-panel relative overflow-hidden p-6 sm:p-7">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
                 <p className="text-base leading-8 text-muted-foreground">
                   If the earliest female experience feels uncertain, the network quality degrades
                   quickly. Designing for stronger female onboarding, better control, and clearer
@@ -62,14 +67,23 @@ export function MarketplaceSection() {
           </Reveal>
 
           <StaggerGroup className="grid gap-5 md:grid-cols-3 lg:grid-cols-1">
-            {marketplaceCards.map((card) => (
+            {marketplaceCards.map((card, index) => (
               <StaggerItem key={card.title}>
-                <article className="interactive-card h-full p-6">
-                  <div className="icon-shell">
-                    <card.icon className="size-5" />
+                <article className="interactive-card group h-full p-6">
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${card.accent} opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
+                  />
+                  <div className="relative flex items-start gap-4">
+                    <div className="icon-shell shrink-0">
+                      <card.icon className="size-5" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-3">
+                        <h3 className="text-xl leading-tight">{card.title}</h3>
+                      </div>
+                      <p className="mt-3 text-sm leading-7 text-muted-foreground">{card.description}</p>
+                    </div>
                   </div>
-                  <h3 className="mt-5 text-xl leading-tight">{card.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-muted-foreground">{card.description}</p>
                 </article>
               </StaggerItem>
             ))}

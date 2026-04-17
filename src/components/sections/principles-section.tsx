@@ -66,7 +66,8 @@ export function PrinciplesSection() {
                 description="Every design decision is aimed at making serious introductions feel more credible, more private, and more respectful than generic relationship products."
               />
 
-              <div className="surface-panel p-6 sm:p-7">
+              <div className="surface-panel relative overflow-hidden p-6 sm:p-7">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
                 <p className="text-base leading-8 text-muted-foreground">
                   Tribal Match should feel closer to a trusted introduction network than a
                   swipe-first app. That means identity, intent, privacy, and operational trust have
@@ -77,11 +78,16 @@ export function PrinciplesSection() {
           </Reveal>
 
           <StaggerGroup className="grid gap-5 md:grid-cols-2">
-            {principles.map((principle) => (
+            {principles.map((principle, index) => (
               <StaggerItem key={principle.title}>
-                <article className="interactive-card h-full p-6">
-                  <div className="icon-shell">
-                    <principle.icon className="size-5" />
+                <article className="interactive-card group h-full p-6">
+                  <div className="flex items-center justify-between">
+                    <div className="icon-shell">
+                      <principle.icon className="size-5" />
+                    </div>
+                    <span className="text-2xl font-heading font-light tracking-tight text-primary/10 transition-colors duration-300 group-hover:text-primary/20">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                   </div>
                   <h3 className="mt-5 text-xl leading-tight">{principle.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-muted-foreground">

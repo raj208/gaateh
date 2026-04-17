@@ -27,13 +27,16 @@ function NavLink({
       onClick={onClick}
       aria-current={active ? "location" : undefined}
       className={cn(
-        "rounded-full px-3 py-2 text-sm font-medium transition-[background-color,color,box-shadow] duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/25",
+        "relative rounded-full px-3.5 py-2 text-sm font-medium transition-[background-color,color,box-shadow] duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/25",
         active
           ? "bg-white text-foreground shadow-sm"
           : "text-muted-foreground hover:bg-white/62 hover:text-foreground",
       )}
     >
       {label}
+      {active && (
+        <span className="absolute -bottom-px left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-primary/60" />
+      )}
     </Link>
   )
 }
@@ -85,18 +88,18 @@ export function SiteNavbar() {
     <header className="sticky top-0 z-50">
       <div
         className={cn(
-          "transition-[background-color,box-shadow,border-color] duration-300",
+          "transition-[background-color,box-shadow,border-color] duration-500",
           isScrolled
             ? "border-b border-border/80 bg-background/86 shadow-[0_10px_30px_rgb(73_45_24_/_0.08)] backdrop-blur-2xl"
             : "bg-background/62 backdrop-blur-xl",
         )}
       >
         <Container className="flex min-h-[var(--nav-height)] items-center justify-between gap-4 py-3">
-          <Link href="#vision" className="flex items-center gap-3" aria-label="Go to Tribal Match hero section">
-            <span className="relative flex size-12 items-center justify-center rounded-full border border-border/80 bg-white/84 shadow-sm">
-              <span className="absolute inset-[0.38rem] rounded-full border border-primary/12" />
-              <span className="absolute inset-[0.72rem] rounded-full border border-primary/18" />
-              <span className="size-2.5 rounded-full bg-primary/85" />
+          <Link href="#vision" className="group flex items-center gap-3" aria-label="Go to Tribal Match hero section">
+            <span className="relative flex size-12 items-center justify-center rounded-full border border-border/80 bg-white/84 shadow-sm transition-all duration-300 group-hover:shadow-md group-hover:border-primary/20">
+              <span className="absolute inset-[0.38rem] rounded-full border border-primary/12 transition-colors duration-300 group-hover:border-primary/25" />
+              <span className="absolute inset-[0.72rem] rounded-full border border-primary/18 transition-colors duration-300 group-hover:border-primary/30" />
+              <span className="size-2.5 rounded-full bg-primary/85 transition-transform duration-300 group-hover:scale-110" />
             </span>
             <span className="flex flex-col">
               <span className="text-sm font-semibold tracking-[0.12em] uppercase text-foreground">
@@ -115,7 +118,7 @@ export function SiteNavbar() {
           <div className="hidden md:block">
             <Link
               href="#contact"
-              className={cn(buttonVariants({ variant: "default" }), "h-11 px-5")}
+              className={cn(buttonVariants({ variant: "default" }), "btn-shimmer h-11 px-5")}
             >
               Contact founder
               <ArrowUpRight className="size-4" />
@@ -159,7 +162,7 @@ export function SiteNavbar() {
                   <Link
                     href="#contact"
                     onClick={() => setMenuOpen(false)}
-                    className={cn(buttonVariants({ variant: "default" }), "mt-2 h-11 w-full")}
+                    className={cn(buttonVariants({ variant: "default" }), "btn-shimmer mt-2 h-11 w-full")}
                   >
                     Contact founder
                     <ArrowUpRight className="size-4" />

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, ShieldCheck } from "lucide-react"
+import { ArrowRight, ShieldCheck, Sparkles } from "lucide-react"
 
 import { AmbientOrb } from "@/components/decorative/ambient-orb"
 import { SectionDivider } from "@/components/decorative/section-divider"
@@ -11,10 +11,20 @@ import { buttonVariants } from "@/components/ui/button"
 import { positioningPills } from "@/lib/constants"
 import { siteConfig } from "@/lib/site"
 import { cn } from "@/lib/utils"
+import { HeroStats } from "@/components/decorative/hero-stats"
 
 export function HeroSection() {
   return (
     <SectionWrapper id="vision" className="overflow-hidden pb-10 pt-10 sm:pt-14">
+      {/* Decorative floating shapes */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -right-20 top-20 size-[32rem] rounded-full bg-gradient-to-br from-primary/5 to-accent/10 blur-3xl animate-pulse-glow" />
+        <div className="absolute -left-32 top-40 size-96 rounded-full bg-gradient-to-tr from-accent/8 to-primary/4 blur-3xl animate-float-delayed" />
+        <div className="absolute right-1/4 top-10 size-3 rounded-full bg-primary/25 animate-float" />
+        <div className="absolute left-1/3 top-32 size-2 rounded-full bg-accent-foreground/15 animate-float-delayed" />
+        <div className="absolute right-1/3 top-48 size-1.5 rounded-full bg-primary/20 animate-float" />
+      </div>
+
       <Container>
         <div className="section-band relative overflow-hidden sm:px-8 sm:py-8 lg:px-10 lg:py-10 xl:px-12">
           <AmbientOrb tone="earth" className="-left-16 top-8 size-40 opacity-80" />
@@ -47,8 +57,9 @@ export function HeroSection() {
                 {positioningPills.map((pill) => (
                   <span
                     key={pill}
-                    className="rounded-full border border-border/80 bg-white/72 px-4 py-2 text-sm font-medium text-foreground/85 shadow-sm backdrop-blur"
+                    className="group rounded-full border border-border/80 bg-white/72 px-4 py-2 text-sm font-medium text-foreground/85 shadow-sm backdrop-blur transition-all duration-300 hover:border-primary/20 hover:bg-white/90 hover:shadow-md"
                   >
+                    <Sparkles className="mr-1.5 inline size-3.5 text-primary/50 transition-colors duration-300 group-hover:text-primary/80" />
                     {pill}
                   </span>
                 ))}
@@ -59,7 +70,7 @@ export function HeroSection() {
                   href="#contact"
                   className={cn(
                     buttonVariants({ size: "lg" }),
-                    "h-12 w-full px-6 sm:min-w-[11rem] sm:w-auto",
+                    "btn-shimmer h-12 w-full px-6 sm:min-w-[11rem] sm:w-auto",
                   )}
                 >
                   Contact founder
@@ -82,6 +93,11 @@ export function HeroSection() {
             </Reveal>
           </div>
         </div>
+
+        {/* Stats bar below hero */}
+        <Reveal delay={0.16}>
+          <HeroStats />
+        </Reveal>
       </Container>
     </SectionWrapper>
   )

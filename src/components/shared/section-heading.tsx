@@ -25,9 +25,9 @@ export function SectionHeading({
     >
       {eyebrow ? <span className="eyebrow">{eyebrow}</span> : null}
       <div className="space-y-3">
-        <h2 className="max-w-3xl text-3xl leading-tight sm:text-4xl">{title}</h2>
+        <h2 className="section-heading-title max-w-3xl text-3xl leading-tight sm:text-4xl">{title}</h2>
         {description ? (
-          <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+          <p className="section-heading-description max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
             {description}
           </p>
         ) : null}

@@ -1,7 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { AlertCircle, CheckCircle2, Mail } from "lucide-react"
+import { AlertCircle, CheckCircle2, Mail, Send } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 
@@ -92,6 +92,7 @@ export function ContactForm() {
 
   return (
     <div className="surface-panel relative overflow-hidden p-6 sm:p-8">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       <LineGrid className="text-[oklch(0.39_0.04_42)] opacity-25" />
       <AmbientOrb tone="earth" className="-left-8 bottom-0 size-24 opacity-75" />
 
@@ -186,7 +187,7 @@ export function ContactForm() {
             aria-live="polite"
             className={`rounded-[1.25rem] border px-4 py-3 outline-none ${
               submissionState.type === "success"
-                ? "border-primary/18 bg-accent/55 text-foreground"
+                ? "border-emerald-500/18 bg-emerald-500/5 text-foreground"
                 : "border-destructive/20 bg-destructive/5 text-foreground"
             }`}
           >
@@ -194,7 +195,7 @@ export function ContactForm() {
               <div
                 className={`mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full ${
                   submissionState.type === "success"
-                    ? "bg-primary/10 text-primary"
+                    ? "bg-emerald-500/10 text-emerald-600"
                     : "bg-destructive/10 text-destructive"
                 }`}
               >
@@ -220,8 +221,8 @@ export function ContactForm() {
           <p id="contact-form-note" className="max-w-xl text-sm leading-6 text-muted-foreground">
             Submitting opens Gmail with a prefilled draft addressed to the founder.
           </p>
-          <Button type="submit" size="lg" className="h-12 min-w-[11.75rem] px-6">
-            <Mail />
+          <Button type="submit" size="lg" className="btn-shimmer h-12 min-w-[11.75rem] px-6">
+            <Send className="size-4" />
             Open Gmail draft
           </Button>
         </div>
