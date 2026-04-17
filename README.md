@@ -37,3 +37,4 @@ npm run build
 
 - The current homepage is a polished placeholder, not the final landing page.
 - Later processes will add the real sections, refined content, motion, and the contact form backend integration.
+# gaateh
