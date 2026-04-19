@@ -26,7 +26,7 @@ export const siteConfig: SiteConfig = {
     "An India-first, trust-first platform for serious introductions that begins with tribal communities across India and scales with care.",
   brandStatement:
     "Culturally grounded introduction infrastructure built around verification, privacy, respectful discovery, and long-term trust.",
-  founderEmail: "rajendrajfc1021@gmail.com",
+  founderEmail: "founder@gaateh.com",
   url: siteUrl,
   navLinks: [
     { label: "Vision", href: "#vision" },

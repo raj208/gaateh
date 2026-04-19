@@ -85,7 +85,7 @@ export function ContactForm() {
       setSubmissionState({
         type: "error",
         message: "We could not open your Gmail draft.",
-        detail: "Please email the founder directly at rajendrajfc1021@gmail.com.",
+        detail: "Please email the founder directly at founder@gaateh.com.",
       })
     }
   })
@@ -185,19 +185,17 @@ export function ContactForm() {
             ref={statusRef}
             tabIndex={-1}
             aria-live="polite"
-            className={`rounded-[1.25rem] border px-4 py-3 outline-none ${
-              submissionState.type === "success"
+            className={`rounded-[1.25rem] border px-4 py-3 outline-none ${submissionState.type === "success"
                 ? "border-emerald-500/18 bg-emerald-500/5 text-foreground"
                 : "border-destructive/20 bg-destructive/5 text-foreground"
-            }`}
+              }`}
           >
             <div className="flex items-start gap-3">
               <div
-                className={`mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full ${
-                  submissionState.type === "success"
+                className={`mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full ${submissionState.type === "success"
                     ? "bg-emerald-500/10 text-emerald-600"
                     : "bg-destructive/10 text-destructive"
-                }`}
+                  }`}
               >
                 {submissionState.type === "success" ? (
                   <CheckCircle2 className="size-4.5" />

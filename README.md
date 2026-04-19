@@ -37,7 +37,7 @@ npm run dev
 ## Contact Form
 
 - Validates the form on the client with Zod
-- Builds a Gmail compose link to `rajendrajfc1021@gmail.com`
+- Builds a Gmail compose link to `founder@gaateh.com`
 - Opens Gmail in a new tab with a prefilled subject and message draft
 - Does not require backend email delivery or provider setup
 
@@ -51,7 +51,7 @@ npm run build
 
 1. Start the dev server with `npm run dev`.
 2. Submit the contact form from the landing page.
-3. Confirm Gmail opens in a new tab with a prefilled draft addressed to `rajendrajfc1021@gmail.com`.
+3. Confirm Gmail opens in a new tab with a prefilled draft addressed to `founder@gaateh.com`.
 
 ## Deploying To Vercel
 
